@@ -5,10 +5,12 @@ export default async function HomePage() {
   const posts = await getPostsFromBill();
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
+    <main className="flex min-h-screen flex-col p-4">
+      <h1 className="text-xl">I Didn't Make This Blog</h1>
+      <hr />
       {posts.map((post) => {
         return (
-          <div key={post.id}>
+          <div key={post.id} className="py-1 hover:text-slate-700">
             <Link href={`/${post.slug}`}>{post.title}</Link>
           </div>
         );

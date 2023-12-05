@@ -11,7 +11,11 @@ export async function getPostsFromBill() {
 
   const posts = rss.items.map((item) => {
     const slug = item.link!.split("/").pop();
-    return { ...item, slug };
+    const content = item.content
+      .replaceAll(' style="text-align: center;"', "")
+      .replaceAll("<div><br /></div>", "")
+      .replaceAll("<br />", "");
+    return { ...item, slug, content };
   });
 
   return posts;
